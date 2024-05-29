@@ -5,20 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap" rel="stylesheet">
+
     <title>Red Social</title>
 </head>
 
 <body>
     <h1>Red Social pajarito</h1>
     <h2>ver posteo</h2>
-    <button onclick="verPosteos()">ver posteos</button>
+    <button onclick="getData()">ver posteos</button>
+    <ul id="postList"></ul>
 
-    <h2>postear</h2>
+    <h2>qué estas pensando </h2>
+
     <form id='postForm' onsubmit="postData()"></form>
     <label for="Title">Title:</label>
     <input type="text" id="postTitle" required>
-    <label for=""></label>
-
+    <label for="postBody">Body:</label>
+    <input type="text" id="postBody" required>
+    <button type="submit">Enviar</button>
     </form>
 
 
