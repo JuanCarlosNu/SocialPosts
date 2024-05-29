@@ -39,3 +39,19 @@ input, textarea{
     margin-bottom: 10px;
     box-sizing: border-box;
 }
+ul{
+    list-style: none;
+    padding: 0;
+}
+.postItem{
+    background-color: rgb(203, 232, 241);
+    padding: 10px 20px;
+    border: 1px solid rgb(191, 191, 241);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.editForm{
+    display: none;
+    margin-top: 10px;
+}

@@ -14,16 +14,16 @@
     <h1>Red Social pajarito</h1>
     <h2>ver posteo</h2>
     <button onclick="getData()">ver posteos</button>
-    <ul id="postList"></ul>
+    <ul id="postsList"></ul>
 
     <h2>qué estas pensando </h2>
 
-    <form id='postForm' onsubmit="postData()"></form>
-    <label for="Title">Title:</label>
-    <input type="text" id="postTitle" required>
-    <label for="postBody">Body:</label>
-    <input type="text" id="postBody" required>
-    <button type="submit">Enviar</button>
+    <form id='postForm' onsubmit="postData()">
+        <label for="Title">Title:</label>
+        <input type="text" id="postTitle" required>
+        <label for="postBody">Body:</label>
+        <input type="text" id="postBody" required>
+        <button type="submit">Enviar</button>
     </form>
 
 
