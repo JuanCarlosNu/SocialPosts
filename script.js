@@ -31,6 +31,7 @@ function renderPostsList() {
           <input id="editTitle-${post.id}" value="${post.title}" required>
           <label for="editBody">Comentario:</label>
           <textarea id="editBody-${post.id}"  required>${post.body}</textarea>
+
           <button onclick="updatePost(${post.id})">Actualizar</button>
         </div>
         `;
@@ -100,4 +101,19 @@ function updatePost(id) {
       renderPostsList();
     })
     .catch((error) => console.error(`error al crear posteo: ${error}`));
+}
+
+function deletePost(id) {
+  fetch(`${urlBase}/${id}`, {
+    method: "DELETE",
+  })
+    .then((res) => {
+      if (res.ok) {
+        posts = posts.filter((post) => post.id != id);
+        renderPostsList();
+      } else {
+        alert("no se pudo eliminar el posteo");
+      }
+    })
+    .catch((error) => console.error("hubo un error", error));
 }
