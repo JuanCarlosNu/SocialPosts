@@ -8,7 +8,7 @@ function getData() {
       posts = data;
       renderPostsList();
     })
-    .catch((error) => console.log("Error al llamar a la api.", error));
+    .catch((error) => console.error("Error al llamar a la api.", error));
 }
 
 function renderPostsList() {
@@ -30,7 +30,7 @@ function renderPostsList() {
           <label for="editTitle">Título:</label>
           <input id="editTitle-${post.id}" value="${post.title}" required>
           <label for="editBody">Comentario:</label>
-          <textarea id="editBody-${post.id}" required></textarea>
+          <textarea id="editBody-${post.id}"  required>${post.body}</textarea>
           <button onclick="updatePost(${post.id})">Actualizar</button>
         </div>
         `;
@@ -65,6 +65,39 @@ function postData() {
       renderPostsList();
       postTitleInput.value = "";
       postBodyInput.value = "";
+    })
+    .catch((error) => console.error(`error al crear posteo: ${error}`));
+}
+
+function editPost(id) {
+  const editForm = document.getElementById(`editForm-${id}`);
+  editForm.style.display = editForm.style.display == "none" ? "block" : "none";
+}
+function updatePost(id) {
+  const editTitle = document.getElementById(`editTitle-${id}`).value;
+  const editBody = document.getElementById(`editBody-${id}`).value;
+
+  fetch(`${urlBase}/${id}`, {
+    method: "PUT",
+    body: JSON.stringify({
+      id: id,
+      title: editTitle,
+      body: editBody,
+      userId: 1,
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      const index = posts.findIndex((post) => post.id === data.id);
+      if (index != -1) {
+        posts[index] = data;
+      } else {
+        alert("hubo un error al actualizar la info del posteo", error);
+      }
+      renderPostsList();
     })
     .catch((error) => console.error(`error al crear posteo: ${error}`));
 }
